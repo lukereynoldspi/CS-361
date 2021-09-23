@@ -1,12 +1,15 @@
 
 
 def main():
-    organize_driver_dict(create_driver_dict(gather_driver_info()))
+    print_intro()
+    print_driver_dict(create_driver_dict(gather_driver_info()))
 
-print("2021 F1 Drivers")
-print("===============")
-print("")
+def print_intro():
+    print("2021 F1 Drivers")
+    print("===============")
+    print("")
 
+#Takes driver info to form into lists
 def gather_driver_info():
     driver_info_list = []
     drivers_list = {
@@ -33,10 +36,11 @@ def gather_driver_info():
     }
     for driver in drivers_list:
         driver_info = driver.split(", ")
+        driver_info[2] = int(driver_info[2])
         driver_info_list.append(driver_info)
-
     return driver_info_list
 
+#Turns lists into dicts
 def create_driver_dict(driver_info_list):
     driver_dict_list = []
     for driver_info in driver_info_list:
@@ -44,8 +48,22 @@ def create_driver_dict(driver_info_list):
         driver_dict_list.append(driver_dict)
     return driver_dict_list
 
-def organize_driver_dict(driver_dict_list):
+#Sorts dicts and prints the output
+def print_driver_dict(driver_dict_list):
+    driver_dict_list = sorted(driver_dict_list, key = lambda item: item["lastname"])
     for driver in driver_dict_list:
-        print(driver["lastname"])
+        if driver["number"] == 44:
+            print(driver["firstname"], driver["lastname"], driver["number"], driver["brand"], "YEET!")
+        else:
+            print(driver["firstname"], driver["lastname"], driver["number"], driver["brand"])
+
+    print("")
+
+    driver_dict_list = sorted(driver_dict_list, key = lambda item: item["number"])
+    for driver in driver_dict_list:
+        if driver["number"] == 44:
+            print(driver["firstname"], driver["lastname"], driver["number"], driver["brand"], "YEET!")
+        else:
+            print(driver["firstname"], driver["lastname"], driver["number"], driver["brand"])
 
 main()
