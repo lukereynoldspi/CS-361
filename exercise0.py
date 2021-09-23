@@ -1,5 +1,3 @@
-
-
 def main():
     print_intro()
     print_driver_dict(create_driver_dict(gather_driver_info()))
