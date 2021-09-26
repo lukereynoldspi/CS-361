@@ -1,2 +1,2 @@
-# cs361
-Repo for my CS 361 exercise 0 work!
+# CS 361 Exercise 0
+This program organizes a list of driver names in alphabetical order, then by driver number.
